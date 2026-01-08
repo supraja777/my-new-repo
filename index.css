@@ -1,196 +1,107 @@
+
 :root {
-  --background: #F7F7F7;
-  --surface: #FFFFFF;
-  --text: #333333;
-  --muted: #666666;
-  --accent: #007bff;
-  --font-family: 'Inter', sans-serif;
-  --font-size: 16px;
-  --line-height: 1.5;
+  --bg: #ffffff;
+  --surface: #f5f7fa;
+  --text: #0f172a;
+  --muted: #475569;
+  --accent: #2563eb;
+  --radius: 14px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: var(--font-family);
-  font-size: var(--font-size);
-  line-height: var(--line-height);
-  background-color: var(--background);
+  font-family: Inter, system-ui, sans-serif;
   color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: var(--surface);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 960px;
+  margin: auto;
+  padding: 64px 24px;
 }
 
 .site-header {
-  background-color: var(--surface);
-  padding: 10px;
-  text-align: center;
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 16px 24px;
 }
 
 .nav-links {
-  list-style: none;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 20px;
+  list-style: none;
 }
 
-.nav-links li {
-  margin-right: 20px;
-}
-
-.nav-links a {
+.nav a {
   text-decoration: none;
-  color: var(--text);
-}
-
-.nav-links a:hover {
-  color: var(--accent);
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .hero {
-  padding: 40px 0;
-  text-align: center;
+  padding: 96px 0 64px;
 }
 
 .hero h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 48px;
+  font-weight: 700;
 }
 
-.hero h2 {
+.hero-tagline {
+  margin-top: 12px;
+  color: var(--muted);
   font-size: 18px;
-  margin-bottom: 20px;
 }
 
-.about {
-  padding: 20px 0;
+section {
+  margin-top: 72px;
 }
 
-.about p {
-  margin-bottom: 20px;
+h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
 }
 
-.skills {
-  padding: 20px 0;
+.skills-grid,
+.projects-list,
+.timeline {
+  display: grid;
+  gap: 16px;
 }
 
-.skills ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.skill-card,
+.project-item,
+.timeline-item {
+  background: var(--surface);
+  padding: 20px;
+  border-radius: var(--radius);
 }
 
-.skills li {
-  margin-bottom: 10px;
+.achievement-list {
+  list-style: disc;
+  padding-left: 20px;
 }
 
-.projects {
-  padding: 20px 0;
-}
-
-.projects ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.projects li {
-  margin-bottom: 10px;
-}
-
-.experience {
-  padding: 20px 0;
-}
-
-.experience ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.experience li {
-  margin-bottom: 20px;
-}
-
-.experience h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.achievements {
-  padding: 20px 0;
-}
-
-.achievements ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.achievements li {
-  margin-bottom: 10px;
-}
-
-.links {
-  padding: 20px 0;
-}
-
-.links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.links li {
-  margin-bottom: 10px;
-}
-
-.links a {
-  text-decoration: none;
-  color: var(--text);
-}
-
-.links a:hover {
+.link-list a {
+  display: inline-block;
+  margin-right: 16px;
   color: var(--accent);
+  font-weight: 500;
 }
 
 .site-footer {
-  background-color: var(--surface);
-  padding: 10px;
   text-align: center;
-  clear: both;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 5px;
-  }
-  .hero h1 {
-    font-size: 18px;
-  }
-  .hero h2 {
-    font-size: 14px;
-  }
+  padding: 48px;
+  color: var(--muted);
 }
