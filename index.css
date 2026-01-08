@@ -1,48 +1,53 @@
-/* Fonts are loaded via Google Fonts, but we can reinforce them */
 body {
-  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
 }
 
-h1, h2, h3 {
+.section-title {
   font-family: 'Poppins', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 600;
 }
 
-/* Card shadow and hover lift for skills/projects */
-.skill-card, .project-item {
-  @apply bg-white rounded-2xl shadow-lg p-6 text-center transition-transform duration-300;
+.section-text {
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.7;
 }
 
-.skill-card:hover, .project-item:hover {
-  transform: translateY(-8px);
+/* Skill + project tiles */
+.skill-card,
+.project-item {
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hero fade-in animation */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
+.skill-card:hover,
+.project-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+
+/* Fade animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fadeIn {
-  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
 }
 
-/* Active nav link underline */
-nav ul li a.active {
-  position: relative;
-  color: #2563EB; /* accent color */
-}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
 
-nav ul li a.active::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: #2563EB;
-  bottom: -4px;
-  left: 0;
-}
-
-/* Hero gradient background fallback for older browsers */
-#hero {
-  background: linear-gradient(to right, #E0F2FF, #F0F5FF);
+/* Active nav */
+nav a.active {
+  color: #4F46E5;
+  font-weight: 500;
 }
