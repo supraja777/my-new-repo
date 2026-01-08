@@ -1,36 +1,45 @@
+// Sticky Section Highlight + Scroll Animations
 document.addEventListener("DOMContentLoaded", () => {
-  // Sticky nav highlight
   const sections = document.querySelectorAll("main section");
   const navLinks = document.querySelectorAll(".nav-links a");
 
-  function activateNav() {
-    let index = sections.length;
-    while (--index && window.scrollY + 150 < sections[index].offsetTop) {}
-    navLinks.forEach(link => link.classList.remove("active"));
-    navLinks[index].classList.add("active");
+  function onScroll() {
+    let current = "";
+    const scrollPos = window.scrollY + 120;
+
+    sections.forEach(sec => {
+      if (scrollPos >= sec.offsetTop) {
+        current = sec.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
   }
 
-  activateNav();
-  window.addEventListener("scroll", activateNav);
+  window.addEventListener("scroll", onScroll);
 
   // Smooth scrolling
   navLinks.forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
-      document.querySelector(link.getAttribute("href")).scrollIntoView({behavior: "smooth"});
+      const target = document.querySelector(link.getAttribute("href"));
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
-  // Fade-in sections
-  const faders = document.querySelectorAll("section, .hero");
-  const observer = new IntersectionObserver((entries, obs) => {
+  // Section fade-in
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+      if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        obs.unobserve(entry.target);
       }
     });
-  }, {threshold: 0.1});
+  }, { threshold: 0.15 });
 
-  faders.forEach(fader => observer.observe(fader));
+  sections.forEach(sec => observer.observe(sec));
 });
