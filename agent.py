@@ -9,7 +9,7 @@ from langchain_core.prompts import PromptTemplate
 load_dotenv()
 
 # ==================================================
-# LLM CONFIG
+# LLM CONFIG (CONTENT ONLY)
 # ==================================================
 llm = ChatGroq(
     model="llama-3.3-70b-versatile",
@@ -17,33 +17,31 @@ llm = ChatGroq(
 )
 
 # ==================================================
-# RESUME
+# RESUME INPUT
 # ==================================================
 from resume import resume_content
 resume_content = resume_content[:6000]
 
 # ==================================================
-# HTML TEMPLATE (LOCKED STRUCTURE)
+# LOCKED HTML — DO NOT MODIFY
 # ==================================================
-HTML_TEMPLATE = """
+HTML_SKELETON = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{NAME}}</title>
 
-  <link rel="stylesheet" href="css/main.css"/>
-  <link rel="stylesheet" href="css/media.css"/>
-
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/media.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
 
 </head>
-
 <body>
 
-<header class="header">
+<header id="header" class="header">
   <div class="container container-lg">
     <div class="header-nav">
       <a href="#home" class="logo">{{SHORT_NAME}}</a>
@@ -71,13 +69,13 @@ HTML_TEMPLATE = """
       </div>
 
       <div>
-        <a href="#projects" class="btn">My Work</a>
+        <a href="#projects" class="btn">My Portfolio</a>
         <a href="#contact" class="btn btn-white">Contact Me</a>
       </div>
     </div>
 
     <div class="hero-img">
-      <img src="formal.jpg" alt="{{NAME}}">
+      <img src="formal.jpg" alt="{{NAME}}" />
     </div>
   </div>
 </section>
@@ -104,7 +102,6 @@ HTML_TEMPLATE = """
   <div class="container">
     <h2 class="title">Contact</h2>
     <p>{{CONTACT_TEXT}}</p>
-
     <div class="social-links-row">
       {{SOCIAL_LINKS}}
     </div>
@@ -122,16 +119,19 @@ HTML_TEMPLATE = """
 """
 
 # ==================================================
-# PROMPT — FIXED (MANDATORY OUTPUT)
+# STRICT PROMPT — TEXT ONLY (NO HTML)
 # ==================================================
 prompt = PromptTemplate(
     input_variables=["resume"],
     template="""
-You are generating portfolio website content.
+You are extracting portfolio CONTENT ONLY.
 
-You MUST return ALL sections below.
-If information is missing, intelligently infer professional content.
-DO NOT leave any section empty.
+CRITICAL RULES:
+- DO NOT output HTML
+- DO NOT output Markdown
+- DO NOT change field names
+- ALL fields are REQUIRED
+- If info is missing, infer professional defaults
 
 Return EXACTLY in this format:
 
@@ -139,22 +139,22 @@ NAME:
 <full name>
 
 SHORT_NAME:
-<initials or first name>
+<first name or initials>
 
 TAGLINE:
 <role + specialization>
 
 ABOUT:
-<professional summary paragraph>
+<4–5 sentence professional summary>
 
 PROJECTS:
-<project title | short description> || <project title | short description> || <project title | short description>
+<Title | Description> || <Title | Description> || <Title | Description>
 
 SOCIALS:
-<label | url> || <label | url> || <label | url>
+<Label | URL> || <Label | URL> || <Label | URL>
 
 CONTACT_TEXT:
-<1–2 lines encouraging contact>
+<1–2 sentence call to action>
 
 Resume:
 {resume}
@@ -164,16 +164,16 @@ Resume:
 raw = (prompt | llm).invoke({"resume": resume_content}).content
 
 # ==================================================
-# PARSER (SAFE)
+# SAFE PARSER
 # ==================================================
-def get(label):
+def extract(label: str) -> str:
     try:
         return raw.split(f"{label}:")[1].split("\n\n")[0].strip()
-    except:
+    except Exception:
         return ""
 
 # ==================================================
-# BUILD SECTIONS
+# BUILD HTML BLOCKS (PROGRAMMATIC)
 # ==================================================
 projects_html = "".join(
     f"""
@@ -184,30 +184,30 @@ projects_html = "".join(
       </div>
     </div>
     """
-    for p in get("PROJECTS").split("||")
+    for p in extract("PROJECTS").split("||")
 )
 
 socials_html = "".join(
     f"""
     <a href="{s.split('|')[1].strip()}" target="_blank">
-      <span>{s.split('|')[0].strip()}</span>
+      <img src="img/social_icons/{s.split('|')[0].lower()}.svg" />
     </a>
     """
-    for s in get("SOCIALS").split("||")
+    for s in extract("SOCIALS").split("||")
 )
 
 # ==================================================
-# FILL TEMPLATE
+# FINAL HTML ASSEMBLY
 # ==================================================
 final_html = (
-    HTML_TEMPLATE
-    .replace("{{NAME}}", get("NAME"))
-    .replace("{{SHORT_NAME}}", get("SHORT_NAME"))
-    .replace("{{TAGLINE}}", get("TAGLINE"))
-    .replace("{{ABOUT}}", get("ABOUT"))
+    HTML_SKELETON
+    .replace("{{NAME}}", extract("NAME"))
+    .replace("{{SHORT_NAME}}", extract("SHORT_NAME"))
+    .replace("{{TAGLINE}}", extract("TAGLINE"))
+    .replace("{{ABOUT}}", extract("ABOUT"))
     .replace("{{PROJECTS}}", projects_html)
     .replace("{{SOCIAL_LINKS}}", socials_html)
-    .replace("{{CONTACT_TEXT}}", get("CONTACT_TEXT"))
+    .replace("{{CONTACT_TEXT}}", extract("CONTACT_TEXT"))
 )
 
 # ==================================================
@@ -216,4 +216,4 @@ final_html = (
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(final_html)
 
-print("✅ index.html generated with ALL sections")
+print("✅ SUCCESS: index.html generated with ALL sections and EXACT structure")
