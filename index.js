@@ -1,25 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll(".nav-links a");
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav ul li a");
 
+  // Smooth scrolling
   navLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
+    link.addEventListener("click", e => {
       e.preventDefault();
-      document.querySelector(link.getAttribute("href")).scrollIntoView({
-        behavior: "smooth"
-      });
+      document.querySelector(link.getAttribute("href"))
+        .scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 
-  const sections = document.querySelectorAll("section[id]");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        history.replaceState(null, null, "#" + entry.target.id);
-        navLinks.forEach(a => a.classList.remove("active"));
-        document.querySelector(`.nav-links a[href="#${entry.target.id}"]`).classList.add("active");
-      }
-    });
-  }, { threshold: 0.3 });
+  // Section fade-in animation
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-fadeIn");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
 
   sections.forEach(section => observer.observe(section));
+
+  // Highlight nav on scroll
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) current = section.getAttribute("id");
+    });
+    navLinks.forEach(link => link.classList.remove("active"));
+    const activeLink = document.querySelector(`nav ul li a[href="#${current}"]`);
+    if (activeLink) activeLink.classList.add("active");
+  });
 });
