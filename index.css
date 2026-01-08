@@ -1,30 +1,39 @@
-body {
-  font-family: Lato, sans-serif;
+:root {
+  --background: #F7F7F7;
+  --surface: #FFFFFF;
+  --text: #333333;
+  --muted: #666666;
+  --accent: #007bff;
+  --font-family: 'Inter', sans-serif;
+  --font-size: 16px;
+  --line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #121212;
-  color: #ffffff;
 }
 
-h1, h2, h3 {
-  font-family: Montserrat, sans-serif;
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  background-color: var(--background);
+  color: var(--text);
 }
 
-h1 {
-  font-size: 48px;
-}
-
-h2 {
-  font-size: 36px;
-}
-
-h3 {
-  font-size: 24px;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--surface);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .site-header {
-  background-color: #2f2f2f;
-  padding: 20px;
+  background-color: var(--surface);
+  padding: 10px;
   text-align: center;
 }
 
@@ -36,9 +45,9 @@ h3 {
 
 .nav-links {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-links li {
@@ -47,129 +56,141 @@ h3 {
 
 .nav-links a {
   text-decoration: none;
-  color: #ffffff;
-  transition: color 0.2s ease;
+  color: var(--text);
 }
 
 .nav-links a:hover {
-  color: #ff69b4;
+  color: var(--accent);
 }
 
 .hero {
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  font-size: 48px;
+  padding: 40px 0;
+  text-align: center;
 }
 
 .hero h1 {
-  font-size: 64px;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.hero h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .about {
-  background-color: #2f2f2f;
-  padding: 50px;
-  color: #ffffff;
+  padding: 20px 0;
+}
+
+.about p {
+  margin-bottom: 20px;
 }
 
 .skills {
-  background-color: #2f2f2f;
-  padding: 50px;
-  color: #ffffff;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  padding: 20px 0;
 }
 
-.skills div {
-  background-color: #121212;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
-  width: calc(33.33% - 40px);
+.skills ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.skills h3 {
-  margin-top: 0;
+.skills li {
+  margin-bottom: 10px;
 }
 
 .projects {
-  background-color: #2f2f2f;
-  padding: 50px;
-  color: #ffffff;
+  padding: 20px 0;
 }
 
-.projects div {
-  background-color: #121212;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
+.projects ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.projects li {
+  margin-bottom: 10px;
 }
 
 .experience {
-  background-color: #2f2f2f;
-  padding: 50px;
-  color: #ffffff;
+  padding: 20px 0;
 }
 
-.experience div {
-  background-color: #121212;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
+.experience ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience li {
+  margin-bottom: 20px;
+}
+
+.experience h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .achievements {
-  background-color: #2f2f2f;
-  padding: 50px;
-  color: #ffffff;
+  padding: 20px 0;
 }
 
-.achievements div {
-  background-color: #121212;
-  padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
+.achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievements li {
+  margin-bottom: 10px;
 }
 
 .links {
-  background-color: #2f2f2f;
-  padding: 50px;
-  color: #ffffff;
-  text-align: center;
+  padding: 20px 0;
+}
+
+.links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links li {
+  margin-bottom: 10px;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.links a:hover {
+  color: var(--accent);
 }
 
 .site-footer {
-  background-color: #2f2f2f;
-  padding: 20px;
-  color: #ffffff;
+  background-color: var(--surface);
+  padding: 10px;
   text-align: center;
+  clear: both;
 }
 
 @media (max-width: 768px) {
-  .skills div {
-    width: calc(50% - 40px);
+  .container {
+    padding: 10px;
   }
 }
 
 @media (max-width: 480px) {
-  .skills div {
-    width: 100%;
+  .container {
+    padding: 5px;
   }
   .hero h1 {
-    font-size: 36px;
-  }
-  h1 {
-    font-size: 36px;
-  }
-  h2 {
-    font-size: 24px;
-  }
-  h3 {
     font-size: 18px;
+  }
+  .hero h2 {
+    font-size: 14px;
   }
 }
