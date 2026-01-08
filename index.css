@@ -1,256 +1,175 @@
-/* CSS Variables */
-:root {
-  --background: #F7F7F7;
-  --surface: #FFFFFF;
-  --text: #333333;
-  --muted: #999999;
-  --accent: #3498DB;
-  --heading-font: 'Montserrat', sans-serif;
-  --body-font: 'Open Sans', sans-serif;
-  --spacing-small: 8px;
-  --spacing-medium: 16px;
-  --spacing-large: 24px;
-}
-
-/* Global Styles */
 body {
-  background-color: var(--background);
-  font-family: var(--body-font);
-  line-height: 1.6;
+  font-family: Lato, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #121212;
+  color: #ffffff;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading-font);
-  margin-bottom: var(--spacing-small);
+h1, h2, h3 {
+  font-family: Montserrat, sans-serif;
 }
 
-/* Hero Section */
-.hero {
-  background-color: var(--surface);
-  background-image: linear-gradient(to bottom, var(--surface), var(--background));
-  background-size: 100% 300px;
-  background-position: 0% 100%;
-  padding: var(--spacing-large);
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.site-header {
+  background-color: #2f2f2f;
+  padding: 20px;
   text-align: center;
 }
 
-.hero-heading {
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ff69b4;
+}
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
   font-size: 48px;
-  font-weight: bold;
-  margin-bottom: var(--spacing-medium);
 }
 
-/* About Section */
+.hero h1 {
+  font-size: 64px;
+}
+
 .about {
-  padding: var(--spacing-large);
+  background-color: #2f2f2f;
+  padding: 50px;
+  color: #ffffff;
 }
 
-.about-heading {
-  margin-bottom: var(--spacing-small);
-}
-
-/* Skills Section */
 .skills {
-  padding: var(--spacing-large);
+  background-color: #2f2f2f;
+  padding: 50px;
+  color: #ffffff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.skills-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.skills-list li {
-  background-color: var(--surface);
-  border: 1px solid #ddd;
-  margin-bottom: var(--spacing-small);
-  padding: var(--spacing-small);
+.skills div {
+  background-color: #121212;
+  padding: 20px;
+  margin: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 40px);
 }
 
-/* Projects Section */
+.skills h3 {
+  margin-top: 0;
+}
+
 .projects {
-  padding: var(--spacing-large);
+  background-color: #2f2f2f;
+  padding: 50px;
+  color: #ffffff;
 }
 
-.projects-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.projects-list li {
-  background-color: var(--surface);
-  border: 1px solid #ddd;
-  margin-bottom: var(--spacing-small);
-  padding: var(--spacing-small);
+.projects div {
+  background-color: #121212;
+  padding: 20px;
+  margin: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Experience Section */
 .experience {
-  padding: var(--spacing-large);
+  background-color: #2f2f2f;
+  padding: 50px;
+  color: #ffffff;
 }
 
-.experience-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.experience-list li {
-  background-color: var(--surface);
-  border: 1px solid #ddd;
-  margin-bottom: var(--spacing-small);
-  padding: var(--spacing-small);
+.experience div {
+  background-color: #121212;
+  padding: 20px;
+  margin: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Timeline */
-.timeline {
-  position: relative;
-  padding: var(--spacing-large);
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
-  background-color: var(--muted);
-}
-
-/* Achievements Section */
 .achievements {
-  padding: var(--spacing-large);
+  background-color: #2f2f2f;
+  padding: 50px;
+  color: #ffffff;
 }
 
-.achievements-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.achievements-list li {
-  background-color: var(--surface);
-  border: 1px solid #ddd;
-  margin-bottom: var(--spacing-small);
-  padding: var(--spacing-small);
+.achievements div {
+  background-color: #121212;
+  padding: 20px;
+  margin: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Links Section */
 .links {
-  padding: var(--spacing-large);
+  background-color: #2f2f2f;
+  padding: 50px;
+  color: #ffffff;
+  text-align: center;
 }
 
-.links-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.site-footer {
+  background-color: #2f2f2f;
+  padding: 20px;
+  color: #ffffff;
+  text-align: center;
 }
 
-.links-list li {
-  background-color: var(--surface);
-  border: 1px solid #ddd;
-  margin-bottom: var(--spacing-small);
-  padding: var(--spacing-small);
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Hover Effects */
-.skills-list li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.projects-list li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.experience-list li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.achievements-list li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.links-list li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Animations */
-.skills-list li {
-  animation: fade-in 0.5s;
-}
-
-.projects-list li {
-  animation: fade-in 0.5s;
-}
-
-.experience-list li {
-  animation: fade-in 0.5s;
-}
-
-.achievements-list li {
-  animation: fade-in 0.5s;
-}
-
-.links-list li {
-  animation: fade-in 0.5s;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+@media (max-width: 768px) {
+  .skills div {
+    width: calc(50% - 40px);
   }
 }
 
-/* Responsive Design */
-@media only screen and (max-width: 768px) {
-  .hero {
-    padding: var(--spacing-medium);
+@media (max-width: 480px) {
+  .skills div {
+    width: 100%;
   }
-
-  .about {
-    padding: var(--spacing-medium);
+  .hero h1 {
+    font-size: 36px;
   }
-
-  .skills {
-    padding: var(--spacing-medium);
+  h1 {
+    font-size: 36px;
   }
-
-  .projects {
-    padding: var(--spacing-medium);
+  h2 {
+    font-size: 24px;
   }
-
-  .experience {
-    padding: var(--spacing-medium);
-  }
-
-  .achievements {
-    padding: var(--spacing-medium);
-  }
-
-  .links {
-    padding: var(--spacing-medium);
+  h3 {
+    font-size: 18px;
   }
 }
