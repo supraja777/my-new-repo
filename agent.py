@@ -1,51 +1,52 @@
+import os
+from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
-from dotenv import load_dotenv
 
+# ==================================================
+# ENV
+# ==================================================
 load_dotenv()
 
 # ==================================================
-# LLM CONFIG — CONTENT EXTRACTION ONLY
+# LLM CONFIG
 # ==================================================
 llm = ChatGroq(
     model="llama-3.3-70b-versatile",
-    temperature=0.1
+    temperature=0.2
 )
 
 # ==================================================
-# RESUME CONTENT
+# RESUME
 # ==================================================
 from resume import resume_content
-resume_text = resume_content[:6000]
+resume_content = resume_content[:6000]
 
 # ==================================================
-# LOCKED HTML TEMPLATE (DO NOT TOUCH STYLING)
+# HTML TEMPLATE (LOCKED STRUCTURE)
 # ==================================================
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{NAME}}</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{NAME}}</title>
 
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/media.css" />
+  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/media.css"/>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-      crossorigin="anonymous"
-    />
-  </head>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
 
-  <body>
+</head>
 
-<header id="header" class="header">
+<body>
+
+<header class="header">
   <div class="container container-lg">
     <div class="header-nav">
-      <a href="#home" class="logo">{{INITIALS}}</a>
+      <a href="#home" class="logo">{{SHORT_NAME}}</a>
       <nav class="nav">
         <ul class="nav-list">
           <li><a href="#home" class="nav-link active">Home</a></li>
@@ -59,28 +60,24 @@ HTML_TEMPLATE = """
 </header>
 
 <section id="home" class="hero">
-  <div class="container container-lg">
-    <div class="hero-row" data-aos="fade-zoom-in">
-      <div class="hero-content">
-        <span class="hero-greeting">Hello, I am</span>
-        <h1 class="hero-heading">{{NAME}}</h1>
-        <span class="hero-heading-subtitle">{{TAGLINE}}</span>
+  <div class="container container-lg hero-row">
+    <div class="hero-content">
+      <span class="hero-greeting">Hello, I am</span>
+      <h1 class="hero-heading">{{NAME}}</h1>
+      <span class="hero-heading-subtitle">{{TAGLINE}}</span>
 
-        <div class="about-social-list">
-          <div class="social-links-row">
-            {{SOCIALS}}
-          </div>
-        </div>
-
-        <div>
-          <a href="#projects" class="btn">My Portfolio</a>
-          <a href="#contact" class="btn btn-white">Contact Me</a>
-        </div>
+      <div class="social-links-row">
+        {{SOCIAL_LINKS}}
       </div>
 
-      <div class="hero-img">
-        <img src="img/hero/hero.png" alt="Profile photo" />
+      <div>
+        <a href="#projects" class="btn">My Work</a>
+        <a href="#contact" class="btn btn-white">Contact Me</a>
       </div>
+    </div>
+
+    <div class="hero-img">
+      <img src="formal.jpg" alt="{{NAME}}">
     </div>
   </div>
 </section>
@@ -91,7 +88,6 @@ HTML_TEMPLATE = """
     <p class="about-descr">
       {{ABOUT}}
     </p>
-    <a href="resume.pdf" class="btn btn-white">Download CV</a>
   </div>
 </section>
 
@@ -107,121 +103,117 @@ HTML_TEMPLATE = """
 <section id="contact" class="contact">
   <div class="container">
     <h2 class="title">Contact</h2>
-    <p>Let’s talk and work together.</p>
+    <p>{{CONTACT_TEXT}}</p>
 
     <div class="social-links-row">
-      {{SOCIALS}}
+      {{SOCIAL_LINKS}}
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  <div class="container">
-    <p>&copy; {{YEAR}} {{NAME}}</p>
-  </div>
+  <p>© 2026 {{NAME}}</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script type="module" src="js/main.js"></script>
 <script>AOS.init();</script>
-
 </body>
 </html>
 """
 
 # ==================================================
-# PROMPT — STRICT TEXT OUTPUT
+# PROMPT — FIXED (MANDATORY OUTPUT)
 # ==================================================
 prompt = PromptTemplate(
     input_variables=["resume"],
     template="""
-Extract clean portfolio content from the resume.
+You are generating portfolio website content.
 
-Return EXACTLY this format:
+You MUST return ALL sections below.
+If information is missing, intelligently infer professional content.
+DO NOT leave any section empty.
+
+Return EXACTLY in this format:
 
 NAME:
-Full Name
+<full name>
 
-INITIALS:
-Initials (e.g. J.S.)
+SHORT_NAME:
+<initials or first name>
 
 TAGLINE:
-Short professional headline
+<role + specialization>
 
 ABOUT:
-Professional summary paragraph
+<professional summary paragraph>
 
 PROJECTS:
-Title | Description || Title | Description
+<project title | short description> || <project title | short description> || <project title | short description>
 
-LINKS:
-GitHub: url || LinkedIn: url || Website: url
+SOCIALS:
+<label | url> || <label | url> || <label | url>
+
+CONTACT_TEXT:
+<1–2 lines encouraging contact>
 
 Resume:
 {resume}
 """
 )
 
-raw = (prompt | llm).invoke({"resume": resume_text}).content
+raw = (prompt | llm).invoke({"resume": resume_content}).content
 
 # ==================================================
-# PARSER
+# PARSER (SAFE)
 # ==================================================
-def extract(label):
-    return raw.split(f"{label}:")[1].split("\n\n")[0].strip()
+def get(label):
+    try:
+        return raw.split(f"{label}:")[1].split("\n\n")[0].strip()
+    except:
+        return ""
 
-name = extract("NAME")
-initials = extract("INITIALS")
-tagline = extract("TAGLINE")
-about = extract("ABOUT")
-
-projects_html = ""
-for item in extract("PROJECTS").split("||"):
-    title, desc = item.split("|", 1)
-    projects_html += f"""
-    <div class="project-box" data-aos="fade-zoom-in">
-      <div class="project-mask">
-        <div class="project-caption">
-          <h5 class="white">{title.strip()}</h5>
-          <p class="white">{desc.strip()}</p>
-        </div>
+# ==================================================
+# BUILD SECTIONS
+# ==================================================
+projects_html = "".join(
+    f"""
+    <div class="project-box">
+      <div class="project-caption">
+        <h5>{p.split('|')[0].strip()}</h5>
+        <p>{p.split('|')[1].strip()}</p>
       </div>
     </div>
     """
+    for p in get("PROJECTS").split("||")
+)
 
-socials_html = ""
-for link in extract("LINKS").split("||"):
-    label, url = link.split(":", 1)
-    socials_html += f"""
-    <a href="{url.strip()}" target="_blank">
-      <img src="img/social_icons/{label.lower().strip()}.svg" alt="{label}">
+socials_html = "".join(
+    f"""
+    <a href="{s.split('|')[1].strip()}" target="_blank">
+      <span>{s.split('|')[0].strip()}</span>
     </a>
     """
+    for s in get("SOCIALS").split("||")
+)
 
 # ==================================================
 # FILL TEMPLATE
 # ==================================================
-html = (
+final_html = (
     HTML_TEMPLATE
-    .replace("{{NAME}}", name)
-    .replace("{{INITIALS}}", initials)
-    .replace("{{TAGLINE}}", tagline)
-    .replace("{{ABOUT}}", about)
+    .replace("{{NAME}}", get("NAME"))
+    .replace("{{SHORT_NAME}}", get("SHORT_NAME"))
+    .replace("{{TAGLINE}}", get("TAGLINE"))
+    .replace("{{ABOUT}}", get("ABOUT"))
     .replace("{{PROJECTS}}", projects_html)
-    .replace("{{SOCIALS}}", socials_html)
-    .replace("{{YEAR}}", "2026")
+    .replace("{{SOCIAL_LINKS}}", socials_html)
+    .replace("{{CONTACT_TEXT}}", get("CONTACT_TEXT"))
 )
 
 # ==================================================
 # WRITE FILE
 # ==================================================
 with open("index.html", "w", encoding="utf-8") as f:
-    f.write(html)
+    f.write(final_html)
 
-print("✅ index.html generated using repo-style structure")
-
-# ==================================================
-# COMMIT
-# ==================================================
-from commit_file import commit_file
-commit_file("index.html")
+print("✅ index.html generated with ALL sections")
