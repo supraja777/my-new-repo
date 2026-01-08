@@ -1,80 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Supraja Srikanth</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supraja Srikanth</title>
 
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/media.css" />
-</head>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/media.css" />
 
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<header class="header">
-  <a href="#home" class="logo">Supraja</a>
-</header>
+  <body>
+    <!-- HEADER -->
+    <header id="header" class="header">
+      <div class="container container-lg">
+        <div class="header-nav">
+          <a
+            href="#home"
+            class="logo"
+            data-aos="fade-down"
+            data-aos-duration="1000"
+          >
+            SS
+          </a>
 
-<section id="home">
-  <h1>Supraja Srikanth</h1>
-  <h2>Software Engineer and AI Specialist</h2>
-  
-    <a href="https://www.linkedin.com/in/suprajasrikanth/" target="_blank" rel="noopener">
-      <img src="img/social_icons/linkedin.svg" alt="LinkedIn" />
-    </a>
-    
+          <nav id="nav" class="nav">
+            <ul class="nav-list" data-aos="fade-down" data-aos-duration="1000">
+              <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+              <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+              <li class="nav-item"><a href="#projects" class="nav-link">Works</a></li>
+              <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <button id="nav-btn" class="nav-btn">
+              <img id="nav-btn-img" src="img/icons/open.svg" alt="Navigation button" />
+            </button>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container container-lg">
+        <div
+          class="hero-row"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-out"
+          data-aos-delay="500"
+          data-aos-duration="1000"
+        >
+          <div class="hero-content">
+            <span class="hero-greeting">Hello, I am</span>
+            <h1 class="hero-heading">Supraja Srikanth</h1>
+            <span class="hero-heading-subtitle">Software Engineer and Data Science Specialist</span>
+
+            <div class="about-social-list">
+              <div class="social-links-row">
+                
     <a href="https://github.com/supraja777" target="_blank" rel="noopener">
       <img src="img/social_icons/github.svg" alt="GitHub" />
     </a>
     
-    <a href="https://www.suprajasrikanth.com" target="_blank" rel="noopener">
-      <img src="img/social_icons/portfolio.svg" alt="Portfolio" />
+    <a href="https://www.linkedin.com/in/suprajasrikanth/" target="_blank" rel="noopener">
+      <img src="img/social_icons/linkedin.svg" alt="LinkedIn" />
     </a>
     
-</section>
+    <a href="https://twitter.com/supraja_srikanth" target="_blank" rel="noopener">
+      <img src="img/social_icons/twitter.svg" alt="Twitter" />
+    </a>
+    
+              </div>
+            </div>
 
-<section id="about">
-  <h2>About</h2>
-  <p>As a highly motivated and detail-oriented software engineer, I bring a strong foundation in computer science and a passion for artificial intelligence and machine learning. With a Master's in Computer Science from the University of Cincinnati, I have developed a solid understanding of software development lifecycle, distributed systems, and cloud computing. My experience in full-stack web development, DevOps, and containerization has equipped me with the skills to design and implement scalable and efficient systems. I am excited to leverage my skills and knowledge to drive innovation and deliver high-quality solutions that meet the needs of users. I am committed to staying up-to-date with the latest technologies and trends, and I am eager to collaborate with others to achieve common goals.</p>
-</section>
+            <div>
+              <a href="#projects" class="btn">My Portfolio</a>
+              <a href="#contact" class="btn btn-white">Contact Me</a>
+            </div>
+          </div>
 
-<section id="projects">
-  <h2>Works</h2>
-  
-    <div class="project-box">
-      <div class="project-caption">
-        <h5>Autopay Platform</h5>
-        <p>Engineered bill notifications and alerts using Spring Boot and Java, resulting in a 30% boost in customer experience through consistent payment reminders</p>
+          <div class="hero-img">
+            <img src="img/hero/hero.png" alt="Supraja Srikanth" />
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-title">
+          <h2 class="title">About Me</h2>
+        </div>
+
+        <div class="about-row">
+          <div class="about-content" data-aos="fade-up" data-aos-duration="1000">
+            <p class="about-descr">
+              As a highly motivated and detail-oriented software engineer, I bring a strong foundation in computer science and a passion for innovation to the table. With a Master's in Computer Science from the University of Cincinnati and a Bachelor's in Computer Science and Business Systems from VNR VJIET, I possess a unique blend of technical and business acumen. My experience in software development, data science, and cloud computing has equipped me with the skills to design, develop, and deploy scalable and efficient solutions. I am committed to delivering high-quality results and continuously improving my skills to stay ahead of the curve. With a strong background in programming languages, front-end and back-end technologies, and cloud computing, I am confident in my ability to drive technological advancements and drive business growth.
+            </p>
+
+            <div class="about-download-btn">
+              <a href="#!" class="btn btn-white">Download CV</a>
+            </div>
+          </div>
+
+          <!-- Skills column kept STATIC (design choice) -->
+          <div
+            class="about-skills"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
+            <div class="skill">
+              <div class="skill-title">Web Development</div>
+              <div class="skill-percent">90%</div>
+              <div class="skill-bar__progress">
+                <div class="skill-bar__fill" data-progress="90"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <div class="skill-title">JavaScript</div>
+              <div class="skill-percent">80%</div>
+              <div class="skill-bar__progress">
+                <div class="skill-bar__fill" data-progress="80"></div>
+              </div>
+            </div>
+
+            <div class="skill">
+              <div class="skill-title">Python</div>
+              <div class="skill-percent">85%</div>
+              <div class="skill-bar__progress">
+                <div class="skill-bar__fill" data-progress="85"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects">
+      <div class="container container-lg">
+        <div class="projects-title">
+          <h2 class="title">Works</h2>
+        </div>
+
+        <div class="projects-row">
+          
+    <div class="project-box" data-aos="fade-zoom-in" data-aos-duration="1000">
+      <a href="#!">
+        <img class="project-img" src="img/works/01.jpg" alt="Autopay Platform" />
+        <div class="project-mask">
+          <div class="project-caption">
+            <h5 class="white">Autopay Platform</h5>
+            <p class="white">Engineered bill notifications and alerts within a distributed autopay platform using Spring Boot and Java</p>
+          </div>
+        </div>
+      </a>
     </div>
     
-    <div class="project-box">
-      <div class="project-caption">
-        <h5>Recurring Mandate Protocol</h5>
-        <p>Architected a robust protocol for autopay, maximizing payment efficiency and diminishing payment failure rates by 1.5%</p>
-      </div>
+    <div class="project-box" data-aos="fade-zoom-in" data-aos-duration="1000">
+      <a href="#!">
+        <img class="project-img" src="img/works/01.jpg" alt="Recurring Mandate Protocol" />
+        <div class="project-mask">
+          <div class="project-caption">
+            <h5 class="white">Recurring Mandate Protocol</h5>
+            <p class="white">Architected a robust recurring mandate protocol for autopay using Spring Boot and Java</p>
+          </div>
+        </div>
+      </a>
     </div>
     
-    <div class="project-box">
-      <div class="project-caption">
-        <h5>Redis Pub/Sub Architecture</h5>
-        <p>Implemented Redis Pub/Sub architecture, increasing concurrent processing capabilities by 25% and decreasing execution latency for high-demand distributed workflows</p>
-      </div>
+    <div class="project-box" data-aos="fade-zoom-in" data-aos-duration="1000">
+      <a href="#!">
+        <img class="project-img" src="img/works/01.jpg" alt="Business Intelligence Dashboards" />
+        <div class="project-mask">
+          <div class="project-caption">
+            <h5 class="white">Business Intelligence Dashboards</h5>
+            <p class="white">Built interactive business intelligence dashboards using React and PostgreSQL for data visualization</p>
+          </div>
+        </div>
+      </a>
     </div>
     
-    <div class="project-box">
-      <div class="project-caption">
-        <h5>Business Intelligence Dashboards</h5>
-        <p>Built interactive business intelligence dashboards using React and PostgreSQL for data visualization, facilitating faster data-driven decisions and increasing dashboard usage by 30%</p>
-      </div>
+    <div class="project-box" data-aos="fade-zoom-in" data-aos-duration="1000">
+      <a href="#!">
+        <img class="project-img" src="img/works/01.jpg" alt="Shadow Testing Environment" />
+        <div class="project-mask">
+          <div class="project-caption">
+            <h5 class="white">Shadow Testing Environment</h5>
+            <p class="white">Designed a shadow testing environment with Java, Spring Boot, and AWS to augment code coverage</p>
+          </div>
+        </div>
+      </a>
     </div>
     
-</section>
+        </div>
+      </div>
+    </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>I am excited to collaborate with like-minded professionals and organizations to drive innovation and deliver high-quality solutions. Please feel free to reach out to me to discuss potential opportunities or to learn more about my work.</p>
-</section>
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-title">
+          <h2 class="title">Contact</h2>
+        </div>
 
-</body>
+        <div class="contact-content">
+          <p>Let's connect and explore how I can help drive technological innovation and business growth for your organization. Feel free to reach out to me at suprajasrikanth872@gmail.com to discuss potential opportunities.</p>
+        </div>
+
+        <form class="contactForm" data-aos="zoom-in" data-aos-duration="1000">
+          <div class="input-box">
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Email Address" required />
+          </div>
+
+          <textarea
+            name="message"
+            cols="30"
+            rows="10"
+            placeholder="Your Message"
+            required
+          ></textarea>
+
+          <div class="contact-button" data-aos="fade-zoom-in" data-aos-delay="500">
+            <button class="btn btn-red" type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="social-links-row footer-social">
+            
+    <a href="https://github.com/supraja777" target="_blank" rel="noopener">
+      <img src="img/social_icons/github.svg" alt="GitHub" />
+    </a>
+    
+    <a href="https://www.linkedin.com/in/suprajasrikanth/" target="_blank" rel="noopener">
+      <img src="img/social_icons/linkedin.svg" alt="LinkedIn" />
+    </a>
+    
+    <a href="https://twitter.com/supraja_srikanth" target="_blank" rel="noopener">
+      <img src="img/social_icons/twitter.svg" alt="Twitter" />
+    </a>
+    
+          </div>
+
+          <div class="footer-copyright">
+            <p>&copy; Supraja Srikanth 2026</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="goToTop" class="goToTop">
+      <a href="#home">
+        <img src="img/icons/arrow_up.svg" alt="Back to top" />
+      </a>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>AOS.init();</script>
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>

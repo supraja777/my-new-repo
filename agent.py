@@ -4,12 +4,12 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 
 # ==================================================
-# ENV SETUP
+# ENV
 # ==================================================
 load_dotenv()
 
 # ==================================================
-# LLM CONFIG — CONTENT GENERATION ONLY
+# LLM CONFIG (TEXT ONLY)
 # ==================================================
 llm = ChatGroq(
     model="llama-3.3-70b-versatile",
@@ -20,95 +20,90 @@ llm = ChatGroq(
 # RESUME INPUT
 # ==================================================
 from resume import resume_content
-
-# keep prompt safe
 resume_content = resume_content[:6000]
 
 # ==================================================
-# LOAD LOCKED HTML TEMPLATE
+# LOAD HTML TEMPLATE (LOCKED STRUCTURE)
 # ==================================================
 with open("index.html", "r", encoding="utf-8") as f:
     HTML_TEMPLATE = f.read()
 
 # ==================================================
-# RICH, STRICT PROMPT (TEXT ONLY)
+# STRICT PROMPT — DATA ONLY
 # ==================================================
 prompt = PromptTemplate(
     input_variables=["resume"],
     template="""
-You are a professional portfolio content generator.
+You are generating CONTENT ONLY for a personal portfolio website.
 
-Your job is to extract and infer HIGH-QUALITY portfolio content
-from the given resume.
+STRICT RULES:
+- DO NOT output HTML
+- DO NOT output Markdown
+- DO NOT explain anything
+- ALL fields are REQUIRED
+- Professional, confident tone
+- If missing info, infer reasonable defaults
 
-ABSOLUTE RULES (VIOLATION = FAILURE):
-- DO NOT generate HTML
-- DO NOT generate Markdown
-- DO NOT add explanations
-- DO NOT change field names
-- ALL sections MUST be present
-- Use confident, professional language
-- If information is missing, infer reasonable defaults
-
-Return content EXACTLY in the format below.
-Do NOT add extra text.
-
-================= OUTPUT FORMAT =================
+Return EXACTLY this format:
 
 NAME:
-Full professional name
+<Full professional name>
 
 SHORT_NAME:
-First name or initials (for navbar/logo)
+<Short name or initials>
 
 TAGLINE:
-Concise role + specialization (max 12 words)
+<Concise role + specialization>
 
 ABOUT:
-4–5 sentence professional summary highlighting expertise,
-impact, and interests. Written in first person.
+<4–5 sentence first-person professional summary>
 
 PROJECTS:
-Project Title | 1–2 sentence description with tech + outcome
-|| Project Title | 1–2 sentence description
-|| Project Title | 1–2 sentence description
+<Project title | short description>
+|| <Project title | short description>
+|| <Project title | short description>
 
 SOCIALS:
-LinkedIn | https://...
-|| GitHub | https://...
-|| Portfolio | https://...
+<GitHub | https://...>
+|| <LinkedIn | https://...>
+|| <Twitter | https://...>
 
 CONTACT_TEXT:
-1–2 sentence call to action encouraging collaboration or contact
+<1–2 sentence call to action>
 
-================= RESUME =================
+Resume:
 {resume}
 """
 )
 
-raw_output = (prompt | llm).invoke({"resume": resume_content}).content.strip()
+raw = (prompt | llm).invoke({"resume": resume_content}).content.strip()
 
 # ==================================================
 # SAFE PARSER
 # ==================================================
-def extract(section: str) -> str:
+def extract(label):
     try:
-        return raw_output.split(f"{section}:")[1].split("\n\n")[0].strip()
+        return raw.split(f"{label}:")[1].split("\n\n")[0].strip()
     except Exception:
         return ""
 
 # ==================================================
-# BUILD PROJECTS HTML
+# BUILD PROJECTS HTML (MATCHES TEMPLATE)
 # ==================================================
 projects_html = ""
-for proj in extract("PROJECTS").split("||"):
-    title, desc = [p.strip() for p in proj.split("|", 1)]
+for p in extract("PROJECTS").split("||"):
+    title, desc = [x.strip() for x in p.split("|", 1)]
     projects_html += f"""
-    <div class="project-box">
-      <div class="project-caption">
-        <h5>{title}</h5>
-        <p>{desc}</p>
-      </div>
+    <div class="project-box" data-aos="fade-zoom-in" data-aos-duration="1000">
+      <a href="#!">
+        <img class="project-img" src="img/works/01.jpg" alt="{title}" />
+        <div class="project-mask">
+          <div class="project-caption">
+            <h5 class="white">{title}</h5>
+            <p class="white">{desc}</p>
+          </div>
+        </div>
+      </a>
     </div>
     """
 
@@ -116,16 +111,17 @@ for proj in extract("PROJECTS").split("||"):
 # BUILD SOCIAL LINKS HTML
 # ==================================================
 socials_html = ""
-for soc in extract("SOCIALS").split("||"):
-    label, url = [s.strip() for s in soc.split("|", 1)]
+for s in extract("SOCIALS").split("||"):
+    label, url = [x.strip() for x in s.split("|", 1)]
+    icon = label.lower()
     socials_html += f"""
     <a href="{url}" target="_blank" rel="noopener">
-      <img src="img/social_icons/{label.lower()}.svg" alt="{label}" />
+      <img src="img/social_icons/{icon}.svg" alt="{label}" />
     </a>
     """
 
 # ==================================================
-# INJECT CONTENT INTO TEMPLATE
+# FINAL HTML ASSEMBLY
 # ==================================================
 final_html = (
     HTML_TEMPLATE
@@ -139,9 +135,9 @@ final_html = (
 )
 
 # ==================================================
-# WRITE BACK TO index.html
+# WRITE FILE
 # ==================================================
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(final_html)
 
-print("✅ SUCCESS: index.html updated with generated portfolio content")
+print("✅ index.html updated successfully with generated content")
