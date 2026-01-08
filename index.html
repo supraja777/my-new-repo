@@ -4,213 +4,113 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 <header class="site-header">
   <nav class="nav">
     <div class="logo">Supraja Srikanth</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#links">Links</a></li>
-    </ul>
+    <ul class="nav-links"></ul>
   </nav>
 </header>
 
-<main>
-  <section class="hero" style="background-image: url('background-image.jpg'); height: 100vh; background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center; color: #ffffff;">
+<main class="container">
+  <section id="hero" class="hero">
     <h1>Supraja Srikanth</h1>
-    <p>Software Engineer</p>
-    <p><a href="tel:+1 (513)-372-5745" style="color: #ffffff;">+1 (513)-372-5745</a> | <a href="mailto:suprajasrikanth872@gmail.com" style="color: #ffffff;">suprajasrikanth872@gmail.com</a> | <a href="https://www.linkedin.com/in/suprajasrikanth/" style="color: #ffffff;">LinkedIn</a> | <a href="https://github.com/supraja777" style="color: #ffffff;">GitHub</a></p>
+    <h2>Software Engineer</h2>
+    <p>Building scalable and efficient software solutions.</p>
   </section>
-  <section class="about" style="background-color: #2f2f2f; padding: 50px; color: #ffffff;">
-    <h2>About Me</h2>
-    <p>I'm a software engineer with a passion for building innovative solutions. I have a Master's degree in Computer Science from the University of Cincinnati and a Bachelor's degree in Computer Science and Business Systems from VNR VJIET.</p>
-    <p>My coursework includes Artificial Intelligence, Machine Learning, Data Structures and Algorithms, Database Management Systems, Computer Engineering, Statistics, Deep Learning, Cloud Computing, Object-Oriented Programming, and Software Development Lifecycle.</p>
+  <section id="about" class="about">
+    <h2>About</h2>
+    <p>Highly motivated and detail-oriented software engineer with a strong background in computer science and a passion for developing innovative solutions.</p>
   </section>
-  <section class="skills" style="background-color: #2f2f2f; padding: 50px; color: #ffffff; display: flex; flex-wrap: wrap; justify-content: center;">
+  <section id="skills" class="skills">
     <h2>Skills</h2>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Programming Languages</h3>
-      <ul>
-        <li>Python</li>
-        <li>Java</li>
-        <li>JavaScript</li>
-        <li>TypeScript</li>
-        <li>Go</li>
-        <li>C#</li>
-        <li>C++</li>
-        <li>R</li>
-        <li>C</li>
-        <li>PHP</li>
-        <li>Bash</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Front-End Technologies</h3>
-      <ul>
-        <li>React.js</li>
-        <li>Redux</li>
-        <li>Next.js</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>TypeScript</li>
-        <li>AJAX</li>
-        <li>GraphQL</li>
-        <li>WebSockets</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Back-End Technologies</h3>
-      <ul>
-        <li>Spring Boot</li>
-        <li>Node.js</li>
-        <li>Express.js</li>
-        <li>Django</li>
-        <li>.NET</li>
-        <li>C#</li>
-        <li>Microservices</li>
-        <li>REST APIs</li>
-        <li>Spring Web MVC</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Cloud and Big Data</h3>
-      <ul>
-        <li>AWS (S3, Glue, Lambda)</li>
-        <li>Google Cloud Platform (BigQuery, AI Platform)</li>
-        <li>Azure (ML, Functions)</li>
-        <li>Apache Spark / PySpark</li>
-        <li>Hadoop HDFS</li>
-        <li>Apache Airflow</li>
-        <li>Apache Hive</li>
-        <li>AWS ECS</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Databases</h3>
-      <ul>
-        <li>MySQL</li>
-        <li>PostgreSQL</li>
-        <li>Oracle</li>
-        <li>PL/SQL</li>
-        <li>Snowflake</li>
-        <li>DynamoDB</li>
-        <li>MongoDB</li>
-        <li>NoSQL</li>
-        <li>Stored Procedures</li>
-        <li>Redis</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>DevOps and Containerization</h3>
-      <ul>
-        <li>Docker</li>
-        <li>Kubernetes</li>
-        <li>Jenkins</li>
-        <li>Virtualization</li>
-        <li>CI/CD pipelines (GitHub Actions, GitLab CI)</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>AI/ML and Data Science Technologies</h3>
-      <ul>
-        <li>Large Language Models (LLMs)</li>
-        <li>Retrieval-Augmented Generation (RAG)</li>
-        <li>TensorFlow Keras</li>
-        <li>CUDA</li>
-        <li>PyTorch</li>
-        <li>Natural Language Processing (NLP)</li>
-        <li>HuggingFace</li>
-        <li>LangChain</li>
-        <li>LangGraph</li>
-        <li>LangSmith</li>
-      </ul>
-    </div>
+    <ul>
+      <li>Programming Languages: Python, Java, JavaScript, TypeScript, Go, C#, C++, R, C, PHP, Bash</li>
+      <li>Front-End Technologies: React.js, Redux, Next.js, HTML, CSS, JavaScript, TypeScript, AJAX, GraphQL, WebSockets</li>
+      <li>Back-End Technologies: Spring Boot, Node.js, Express.js, Django, .NET, C#, Microservices, REST APIs, Spring Web MVC</li>
+      <li>Cloud and Big Data: AWS, Google Cloud Platform, Azure, Apache Spark, Hadoop HDFS, Apache Airflow, Apache Hive</li>
+      <li>Databases: MySQL, PostgreSQL, Oracle, PL/SQL, Snowflake, DynamoDB, MongoDB, NoSQL, Stored Procedures, Redis</li>
+      <li>DevOps and Containerization: Docker, Kubernetes, Jenkins, Virtualization, CI/CD pipelines</li>
+      <li>AI/ML and Data Science Technologies: Large Language Models, Retrieval-Augmented Generation, TensorFlow Keras, CUDA, PyTorch, Natural Language Processing</li>
+    </ul>
   </section>
-  <section class="projects" style="background-color: #2f2f2f; padding: 50px; color: #ffffff;">
+  <section id="projects" class="projects">
     <h2>Projects</h2>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Project 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Project 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Project 3</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-    </div>
+    <ul>
+      <li>Engineered bill notifications and alerts within the distributed autopay platform using Spring Boot and Java.</li>
+      <li>Architected a robust recurring mandate protocol for autopay.</li>
+      <li>Decreased payment processing latency by 75ms by optimizing BBPS APIs.</li>
+      <li>Optimized API response time for Stripe transactions by 150ms.</li>
+      <li>Implemented Amazon OAuth for user registration and authentication.</li>
+      <li>Built interactive business intelligence dashboards using React and PostgreSQL.</li>
+    </ul>
   </section>
-  <section class="experience" style="background-color: #2f2f2f; padding: 50px; color: #ffffff;">
+  <section id="experience" class="experience">
     <h2>Experience</h2>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Application Developer, ThoughtWorks</h3>
-      <p>Jan 2024 - Jul 2025</p>
-      <ul>
-        <li>Engineered bill notifications and alerts within the distributed autopay platform using Spring Boot and Java</li>
-        <li>Architected a robust recurring mandate protocol for autopay</li>
-        <li>Decreased payment processing latency by 75ms by optimizing BBPS APIs</li>
-        <li>Implemented Redis Pub/Sub architecture, increasing concurrent processing capabilities by at least 25%</li>
-        <li>Reduced time spent on PostgreSQL maintenance by automating database updates</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Software Engineer, KAS Commerce</h3>
-      <p>Oct 2023 - Jan 2024</p>
-      <ul>
-        <li>Optimized API response time for Stripe transactions by 150ms</li>
-        <li>Implemented Amazon OAuth for user registration and authentication</li>
-        <li>Built interactive business intelligence dashboards using React and PostgreSQL for data visualization</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Software Engineering Intern, Amazon</h3>
-      <p>Jan 2023 - Jun 2023</p>
-      <ul>
-        <li>Designed a shadow testing environment with Java, Spring Boot, and AWS</li>
-        <li>Debugged rate card logic leveraging JUnit, Mockito, and EasyMock for comprehensive integration testing</li>
-        <li>Initiated an automated approval workflow to promptly detect Brazil package violations during pipeline deployments via Maven and Git</li>
-      </ul>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Software Engineering Intern, Giottus Technologies Pvt Ltd</h3>
-      <p>Jun 2022 - Jul 2022</p>
-      <ul>
-        <li>Integrated cryptocurrency order book API using React.js and Python</li>
-        <li>Cleaned and preprocessed 75 GB of cryptocurrency transaction data using Pandas and NumPy</li>
-      </ul>
-    </div>
+    <ul>
+      <li>
+        <h3>Application Developer, ThoughtWorks</h3>
+        <p>Jan 2024 - Jul 2025</p>
+        <ul>
+          <li>Engineered bill notifications and alerts within the distributed autopay platform using Spring Boot and Java.</li>
+          <li>Architected a robust recurring mandate protocol for autopay.</li>
+          <li>Decreased payment processing latency by 75ms by optimizing BBPS APIs.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Software Engineer, KAS Commerce</h3>
+        <p>Oct 2023 - Jan 2024</p>
+        <ul>
+          <li>Optimized API response time for Stripe transactions by 150ms.</li>
+          <li>Implemented Amazon OAuth for user registration and authentication.</li>
+          <li>Built interactive business intelligence dashboards using React and PostgreSQL.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Software Engineering Intern, Amazon</h3>
+        <p>Jan 2023 - Jun 2023</p>
+        <ul>
+          <li>Designed a shadow testing environment with Java, Spring Boot, and AWS.</li>
+          <li>Debugged rate card logic leveraging JUnit, Mockito, and EasyMock.</li>
+          <li>Initiated an automated approval workflow to promptly detect Brazil package violations during pipeline deployments.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Software Engineering Intern, Giottus Technologies Pvt Ltd</h3>
+        <p>Jun 2022 - Jul 2022</p>
+        <ul>
+          <li>Integrated cryptocurrency order book API using React.js and Python.</li>
+          <li>Cleaned and preprocessed 75 GB of cryptocurrency transaction data using Pandas and NumPy.</li>
+        </ul>
+      </li>
+    </ul>
   </section>
-  <section class="achievements" style="background-color: #2f2f2f; padding: 50px; color: #ffffff;">
+  <section id="achievements" class="achievements">
     <h2>Achievements</h2>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Achievement 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Achievement 2</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-    </div>
-    <div style="background-color: #121212; padding: 20px; margin: 20px; border-radius: 10px;">
-      <h3>Achievement 3</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
-    </div>
+    <ul>
+      <li>Boosted customer experience by 30% through consistent payment reminders.</li>
+      <li>Diminished payment failure rates by 1.5%.</li>
+      <li>Increased concurrent processing capabilities by at least 25%.</li>
+      <li>Expanded test coverage from 65% to 95%.</li>
+      <li>Improved dashboard usage by 30%.</li>
+    </ul>
   </section>
-  <section class="links" style="background-color: #2f2f2f; padding: 50px; color: #ffffff; text-align: center;">
-    <h2>Get in Touch</h2>
-    <p><a href="tel:+1 (513)-372-5745" style="color: #ffffff;">+1 (513)-372-5745</a> | <a href="mailto:suprajasrikanth872@gmail.com" style="color: #ffffff;">suprajasrikanth872@gmail.com</a> | <a href="https://www.linkedin.com/in/suprajasrikanth/" style="color: #ffffff;">LinkedIn</a> | <a href="https://github.com/supraja777" style="color: #ffffff;">GitHub</a></p>
+  <section id="links" class="links">
+    <h2>Links</h2>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/suprajasrikanth/">LinkedIn</a></li>
+      <li><a href="https://github.com/supraja777">GitHub</a></li>
+      <li><a href="mailto:suprajasrikanth872@gmail.com">Email</a></li>
+      <li><a href="tel:+1 (513)-372-5745">Phone</a></li>
+    </ul>
   </section>
 </main>
 
-<footer class="site-footer" style="background-color: #2f2f2f; padding: 20px; color: #ffffff; text-align: center;">
-  <p>&copy; 2024 Supraja Srikanth</p>
-</footer>
+<footer class="site-footer"></footer>
 </body>
 </html>
