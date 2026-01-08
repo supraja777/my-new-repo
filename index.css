@@ -1,197 +1,48 @@
-/* BASE UTILS */
-:root {
-  --bg: #ffffff;
-  --text: #111827;
-  --muted: #6b7280;
-  --accent: #2563eb;
-  --surface: #f9fafb;
-  --radius: 12px;
-  --spacing: 24px;
-  --transition: 0.3s ease;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Fonts are loaded via Google Fonts, but we can reinforce them */
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
 }
 
-.container {
-  max-width: 1080px;
-  margin: auto;
-  padding: var(--spacing);
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
 }
 
-/* NAV */
-.site-header {
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid #e5e7eb;
-  z-index: 1000;
+/* Card shadow and hover lift for skills/projects */
+.skill-card, .project-item {
+  @apply bg-white rounded-2xl shadow-lg p-6 text-center transition-transform duration-300;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
+.skill-card:hover, .project-item:hover {
+  transform: translateY(-8px);
 }
 
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
+/* Hero fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.nav-links a {
-  text-decoration: none;
-  font-weight: 500;
-  color: var(--muted);
-  transition: color var(--transition);
+.animate-fadeIn {
+  animation: fadeInUp 0.8s ease forwards;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--accent);
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 5rem 1rem 4rem;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.hero-tagline {
-  font-size: 1.25rem;
-  color: var(--muted);
-}
-
-/* SECTION HEADINGS */
-h2 {
-  font-size: 2.25rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-/* ABOUT */
-.about p {
-  max-width: 720px;
-  margin-top: 0.75rem;
-}
-
-/* SKILLS GRID */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-}
-
-.skill-card {
-  background: var(--surface);
-  padding: 1rem;
-  border-radius: var(--radius);
-  text-align: center;
-  font-weight: 500;
-  color: var(--text);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.skill-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-}
-
-/* PROJECTS GRID */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.project-item {
-  background: var(--surface);
-  padding: 1rem;
-  border-radius: var(--radius);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.project-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-/* EXPERIENCE TIMELINE */
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.timeline-item {
-  border-left: 3px solid var(--accent);
-  padding-left: 1rem;
+/* Active nav link underline */
+nav ul li a.active {
   position: relative;
+  color: #2563EB; /* accent color */
 }
 
-.timeline-item::before {
+nav ul li a.active::after {
   content: '';
   position: absolute;
-  left: -7px;
-  top: 0;
-  width: 14px;
-  height: 14px;
-  background: var(--accent);
-  border-radius: 50%;
+  width: 100%;
+  height: 2px;
+  background: #2563EB;
+  bottom: -4px;
+  left: 0;
 }
 
-/* ACHIEVEMENTS */
-.achievement-list {
-  list-style: disc;
-  padding-left: 1.5rem;
-}
-
-/* CONTACT LINKS */
-.link-list a {
-  margin-right: 1rem;
-  color: var(--accent);
-  font-weight: 500;
-  transition: transform var(--transition);
-}
-
-.link-list a:hover {
-  transform: scale(1.15);
-}
-
-/* FADE-IN ANIMATIONS */
-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity var(--transition), transform var(--transition);
-}
-
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* FOOTER */
-.site-footer {
-  text-align: center;
-  padding: 3rem 0;
-  color: var(--muted);
-  font-size: 0.875rem;
+/* Hero gradient background fallback for older browsers */
+#hero {
+  background: linear-gradient(to right, #E0F2FF, #F0F5FF);
 }
