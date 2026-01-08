@@ -6,82 +6,126 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Supraja Srikanth</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-white text-gray-900 antialiased">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#2563EB',
+            muted: '#475569',
+            surface: '#F9FAFB',
+            heroStart: '#E0F2FF',
+            heroEnd: '#F0F5FF'
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 font-body">
+
+<!-- NAV -->
 <header class="sticky top-0 bg-white shadow-sm z-50">
   <nav class="container mx-auto flex justify-between items-center py-4">
-    <div class="text-2xl font-bold">Supraja Srikanth</div>
-    <ul class="flex space-x-6 text-gray-600">
-      <li><a href="#about" class="hover:text-blue-600">About</a></li>
-      <li><a href="#skills" class="hover:text-blue-600">Skills</a></li>
-      <li><a href="#projects" class="hover:text-blue-600">Projects</a></li>
-      <li><a href="#experience" class="hover:text-blue-600">Experience</a></li>
-      <li><a href="#achievements" class="hover:text-blue-600">Achievements</a></li>
-      <li><a href="#links" class="hover:text-blue-600">Contact</a></li>
+    <div class="text-2xl font-bold font-heading">Supraja Srikanth</div>
+    <ul class="flex space-x-6 text-muted">
+      <li><a href="#about" class="hover:text-accent transition">About</a></li>
+      <li><a href="#skills" class="hover:text-accent transition">Skills</a></li>
+      <li><a href="#projects" class="hover:text-accent transition">Projects</a></li>
+      <li><a href="#experience" class="hover:text-accent transition">Experience</a></li>
+      <li><a href="#achievements" class="hover:text-accent transition">Achievements</a></li>
+      <li><a href="#links" class="hover:text-accent transition">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<main class="space-y-24">
+<main class="space-y-32">
 
-  <!-- Hero -->
-  <section id="hero" class="text-center pt-24 pb-12 container mx-auto">
-    <h1 class="text-5xl font-extrabold">Supraja Srikanth</h1>
-    <p class="text-xl text-gray-600 mt-2">Innovative software developer with expertise in AI, ML, and cloud computing.</p>
+  <!-- HERO -->
+  <section id="hero" class="text-center py-32 bg-gradient-to-r from-heroStart to-heroEnd rounded-b-3xl">
+    <h1 class="text-6xl font-heading font-extrabold animate-fadeIn">Supraja Srikanth</h1>
+    <p class="text-xl text-muted mt-4 animate-fadeIn delay-200">Innovative software developer with expertise in AI, ML, and cloud computing</p>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="container mx-auto px-6">
-    <h2 class="text-3xl font-semibold text-center">About</h2>
-    <div class="mt-4 text-lg text-center text-gray-700">Highly motivated and detail-oriented software developer with a strong background in computer science and experience in developing scalable and efficient software solutions.</div>
+  <section id="about" class="container mx-auto px-6 text-center">
+    <h2 class="text-4xl font-heading font-semibold mb-6">About Me</h2>
+    <p class="max-w-3xl mx-auto text-lg text-muted">Highly motivated and detail-oriented software developer with a strong background in computer science and experience in developing scalable and efficient software solutions</p>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="container mx-auto px-6">
-    <h2 class="text-3xl font-semibold text-center">Skills</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-      <div class='skill-card'>Programming Languages</div><div class='skill-card'>Front-End Technologies</div><div class='skill-card'>Back-End Technologies</div><div class='skill-card'>Cloud and Big Data</div><div class='skill-card'>Databases</div><div class='skill-card'>DevOps and Containerization</div><div class='skill-card'>AI/ML and Data Science Technologies</div>
+  <section id="skills" class="bg-surface py-16">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-heading font-semibold text-center mb-10">Skills</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <div class='skill-card'>Programming Languages</div><div class='skill-card'>Front-End Technologies</div><div class='skill-card'>Back-End Technologies</div><div class='skill-card'>Cloud and Big Data</div><div class='skill-card'>Databases</div><div class='skill-card'>DevOps and Containerization</div><div class='skill-card'>AI/ML and Data Science Technologies</div>
+      </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects" class="container mx-auto px-6">
-    <h2 class="text-3xl font-semibold text-center">Projects</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-      <div class='project-item'>Engineered bill notifications and alerts using Spring Boot and Java</div><div class='project-item'>Implemented Redis Pub/Sub architecture for concurrent processing</div><div class='project-item'>Built interactive business intelligence dashboards using React and PostgreSQL</div><div class='project-item'>Designed a shadow testing environment with Java, Spring Boot, and AWS</div><div class='project-item'>Integrated cryptocurrency order book API using React.js and Python</div>
+    <h2 class="text-4xl font-heading font-semibold text-center mb-10">Projects</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class='project-item'>Engineered bill notifications and alerts within a distributed autopay platform using Spring Boot and Java</div><div class='project-item'>>
+Architected a robust recurring mandate protocol for autopay using Java and Spring Boot</div><div class='project-item'>>
+Implemented Redis Pub/Sub architecture to increase concurrent processing capabilities</div><div class='project-item'>>
+Optimized API response time for Stripe transactions using TypeScript and React</div><div class='project-item'>>
+Built interactive business intelligence dashboards using React and PostgreSQL</div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="container mx-auto px-6">
-    <h2 class="text-3xl font-semibold text-center">Experience</h2>
-    <div class="space-y-4 mt-6">
-      <div class='timeline-item'>Application Developer | ThoughtWorks | Jan 2024 - Jul 2025</div><div class='timeline-item'>Software Engineer | KAS Commerce | Oct 2023 - Jan 2024</div><div class='timeline-item'>Software Engineering Intern | Amazon | Jan 2023 - Jun 2023</div><div class='timeline-item'>Software Engineering Intern | Giottus Technologies Pvt Ltd | Jun 2022 - Jul 2022</div>
+  <section id="experience" class="bg-surface py-16">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-heading font-semibold text-center mb-10">Experience</h2>
+      <div class="space-y-6">
+        <div class='timeline-item'>Application Developer | ThoughtWorks | Jan 2024 - Jul 2025</div><div class='timeline-item'>>
+Software Engineer | KAS Commerce | Oct 2023 - Jan 2024</div><div class='timeline-item'>>
+Software Engineering Intern | Amazon | Jan 2023 - Jun 2023</div><div class='timeline-item'>>
+Software Engineering Intern | Giottus Technologies Pvt Ltd | Jun 2022 - Jul 2022</div>
+      </div>
     </div>
   </section>
 
   <!-- ACHIEVEMENTS -->
   <section id="achievements" class="container mx-auto px-6">
-    <h2 class="text-3xl font-semibold text-center">Achievements</h2>
-    <ul class="list-disc list-inside mt-6 space-y-2 text-gray-700">
-      <li>Boosted customer experience by 30% through consistent payment reminders</li><li>Decreased payment failure rates by 1.5%</li><li>Reduced payment processing latency by 75ms</li><li>Increased concurrent processing capabilities by 25%</li><li>Expanded test coverage from 65% to 95%</li>
+    <h2 class="text-4xl font-heading font-semibold text-center mb-10">Achievements</h2>
+    <ul class="list-disc list-inside text-muted space-y-2 text-center">
+      <li>Boosted customer experience by 30% through consistent payment reminders</li><li>>
+Maximized payment efficiency and diminished payment failure rates by 1.5%</li><li>>
+Decreased payment processing latency by 75ms</li><li>>
+Increased concurrent processing capabilities by at least 25%</li><li>>
+Improved database performance by 10%</li>
     </ul>
   </section>
 
-  <!-- LINKS -->
-  <section id="links" class="container mx-auto px-6">
-    <h2 class="text-3xl font-semibold text-center">Contact</h2>
-    <div class="flex justify-center space-x-6 text-blue-600 mt-4">
-      <a href='https://www.linkedin.com/in/suprajasrikanth/' target='_blank'>LinkedIn</a><a href='https://github.com/supraja777' target='_blank'> GitHub</a><a href='suprajasrikanth872@gmail.com' target='_blank'> Email</a>
+  <!-- CONTACT -->
+  <section id="links" class="bg-surface py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-heading font-semibold mb-6">Contact</h2>
+      <div class="flex justify-center space-x-6 text-accent text-lg font-medium">
+        <a href='https://www.linkedin.com/in/suprajasrikanth/' target='_blank'>LinkedIn</a><a href='https://github.com/supraja777' target='_blank'>>
+GitHub</a><a href='suprajasrikanth872@gmail.com' target='_blank'>>
+Email</a>
+      </div>
     </div>
   </section>
 
 </main>
 
-<footer class="text-center text-gray-500 py-8">
+<footer class="text-center text-muted py-12">
   © 2026 Supraja Srikanth
 </footer>
 
