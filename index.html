@@ -1,116 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <title>Supraja Srikanth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
 <header class="site-header">
-  <nav class="nav">
+  <nav class="nav container">
     <div class="logo">Supraja Srikanth</div>
-    <ul class="nav-links"></ul>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#links">Contact</a></li>
+    </ul>
   </nav>
 </header>
 
 <main class="container">
   <section id="hero" class="hero">
     <h1>Supraja Srikanth</h1>
-    <h2>Software Engineer</h2>
-    <p>Building scalable and efficient software solutions.</p>
+    <p class="hero-tagline">Software Developer with expertise in Java, Spring Boot, and Cloud Computing.</p>
   </section>
+
   <section id="about" class="about">
     <h2>About</h2>
-    <p>Highly motivated and detail-oriented software engineer with a strong background in computer science and a passion for developing innovative solutions.</p>
+    <p>Supraja Srikanth is a software developer with a Master's in Computer Science. She has experience in developing scalable applications using Java, Spring Boot, and cloud platforms. Her expertise includes software design patterns, microservices, and database management. She is skilled in Agile development and has worked on various projects, including bill notifications and payment processing systems.</p>
   </section>
+
   <section id="skills" class="skills">
     <h2>Skills</h2>
-    <ul>
-      <li>Programming Languages: Python, Java, JavaScript, TypeScript, Go, C#, C++, R, C, PHP, Bash</li>
-      <li>Front-End Technologies: React.js, Redux, Next.js, HTML, CSS, JavaScript, TypeScript, AJAX, GraphQL, WebSockets</li>
-      <li>Back-End Technologies: Spring Boot, Node.js, Express.js, Django, .NET, C#, Microservices, REST APIs, Spring Web MVC</li>
-      <li>Cloud and Big Data: AWS, Google Cloud Platform, Azure, Apache Spark, Hadoop HDFS, Apache Airflow, Apache Hive</li>
-      <li>Databases: MySQL, PostgreSQL, Oracle, PL/SQL, Snowflake, DynamoDB, MongoDB, NoSQL, Stored Procedures, Redis</li>
-      <li>DevOps and Containerization: Docker, Kubernetes, Jenkins, Virtualization, CI/CD pipelines</li>
-      <li>AI/ML and Data Science Technologies: Large Language Models, Retrieval-Augmented Generation, TensorFlow Keras, CUDA, PyTorch, Natural Language Processing</li>
-    </ul>
+    <div class="skills-grid">
+      <div class='skill-card'>Programming Languages</div><div class='skill-card'>Front-End Technologies</div><div class='skill-card'>Back-End Technologies</div><div class='skill-card'>Cloud and Big Data</div><div class='skill-card'>Databases</div><div class='skill-card'>DevOps and Containerization</div><div class='skill-card'>AI/ML and Data Science Technologies</div>
+    </div>
   </section>
+
   <section id="projects" class="projects">
     <h2>Projects</h2>
-    <ul>
-      <li>Engineered bill notifications and alerts within the distributed autopay platform using Spring Boot and Java.</li>
-      <li>Architected a robust recurring mandate protocol for autopay.</li>
-      <li>Decreased payment processing latency by 75ms by optimizing BBPS APIs.</li>
-      <li>Optimized API response time for Stripe transactions by 150ms.</li>
-      <li>Implemented Amazon OAuth for user registration and authentication.</li>
-      <li>Built interactive business intelligence dashboards using React and PostgreSQL.</li>
-    </ul>
+    <div class="projects-list">
+      <div class='project-item'>Engineered bill notifications and alerts using Spring Boot and Java</div><div class='project-item'>Implemented Redis Pub/Sub architecture for concurrent processing</div><div class='project-item'>Developed unit and integration tests using JUnit and Spring WebMVC</div><div class='project-item'>Optimized API response time for Stripe transactions</div><div class='project-item'>Built interactive business intelligence dashboards using React and PostgreSQL</div>
+    </div>
   </section>
+
   <section id="experience" class="experience">
     <h2>Experience</h2>
-    <ul>
-      <li>
-        <h3>Application Developer, ThoughtWorks</h3>
-        <p>Jan 2024 - Jul 2025</p>
-        <ul>
-          <li>Engineered bill notifications and alerts within the distributed autopay platform using Spring Boot and Java.</li>
-          <li>Architected a robust recurring mandate protocol for autopay.</li>
-          <li>Decreased payment processing latency by 75ms by optimizing BBPS APIs.</li>
-        </ul>
-      </li>
-      <li>
-        <h3>Software Engineer, KAS Commerce</h3>
-        <p>Oct 2023 - Jan 2024</p>
-        <ul>
-          <li>Optimized API response time for Stripe transactions by 150ms.</li>
-          <li>Implemented Amazon OAuth for user registration and authentication.</li>
-          <li>Built interactive business intelligence dashboards using React and PostgreSQL.</li>
-        </ul>
-      </li>
-      <li>
-        <h3>Software Engineering Intern, Amazon</h3>
-        <p>Jan 2023 - Jun 2023</p>
-        <ul>
-          <li>Designed a shadow testing environment with Java, Spring Boot, and AWS.</li>
-          <li>Debugged rate card logic leveraging JUnit, Mockito, and EasyMock.</li>
-          <li>Initiated an automated approval workflow to promptly detect Brazil package violations during pipeline deployments.</li>
-        </ul>
-      </li>
-      <li>
-        <h3>Software Engineering Intern, Giottus Technologies Pvt Ltd</h3>
-        <p>Jun 2022 - Jul 2022</p>
-        <ul>
-          <li>Integrated cryptocurrency order book API using React.js and Python.</li>
-          <li>Cleaned and preprocessed 75 GB of cryptocurrency transaction data using Pandas and NumPy.</li>
-        </ul>
-      </li>
-    </ul>
+    <div class="timeline">
+      <div class='timeline-item'>Application Developer at ThoughtWorks</div><div class='timeline-item'>Software Engineer at KAS Commerce</div><div class='timeline-item'>Software Engineering Intern at Amazon</div><div class='timeline-item'>Software Engineering Intern at Giottus Technologies Pvt Ltd</div>
+    </div>
   </section>
+
   <section id="achievements" class="achievements">
     <h2>Achievements</h2>
-    <ul>
-      <li>Boosted customer experience by 30% through consistent payment reminders.</li>
-      <li>Diminished payment failure rates by 1.5%.</li>
-      <li>Increased concurrent processing capabilities by at least 25%.</li>
-      <li>Expanded test coverage from 65% to 95%.</li>
-      <li>Improved dashboard usage by 30%.</li>
+    <ul class="achievement-list">
+      <li>Decreased payment processing latency by 75ms</li><li>Reduced payment failure rates by 1.5%</li><li>Increased concurrent processing capabilities by 25%</li><li>Improved test coverage from 65% to 95%</li><li>Elevated test coverage by 15% and reduced post-deployment bugs</li>
     </ul>
   </section>
+
   <section id="links" class="links">
-    <h2>Links</h2>
-    <ul>
-      <li><a href="https://www.linkedin.com/in/suprajasrikanth/">LinkedIn</a></li>
-      <li><a href="https://github.com/supraja777">GitHub</a></li>
-      <li><a href="mailto:suprajasrikanth872@gmail.com">Email</a></li>
-      <li><a href="tel:+1 (513)-372-5745">Phone</a></li>
-    </ul>
+    <h2>Contact</h2>
+    <div class="link-list">
+      <a href='suprajasrikanth872@gmail.com' target='_blank'>Email</a><a href='www.linkedin.com/in/suprajasrikanth/' target='_blank'> LinkedIn</a><a href='https://github.com/supraja777' target='_blank'> GitHub</a>
+    </div>
   </section>
 </main>
 
-<footer class="site-footer"></footer>
+<footer class="site-footer">
+  <p>© 2026 Supraja Srikanth</p>
+</footer>
+
 </body>
 </html>
